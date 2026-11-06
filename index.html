@@ -1,0 +1,132 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Festive Fracas</title>
+  <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+  <header class="banner dark">
+    <div>
+      <p class="eyebrow">Third annual / Dota 2 1v1 fundraiser</p>
+      <h1 id="event-name">Festive Fracas</h1>
+      <p id="charity" class="lead"></p>
+      <p class="when">Saturday 12 December</p>
+      <p id="start-note"></p>
+      <a id="signup-top" class="button light signup" target="_blank" rel="noopener" hidden>Sign up to play</a>
+    </div>
+    <img id="logo" src="./logo.png" alt="Festive Fracas logo" onerror="this.remove()">
+  </header>
+
+  <div class="stats">
+    <div><span>Raised so far</span><strong id="raised">£0</strong></div>
+    <div class="stat-goal"><span>This year's goal</span><strong>£1,000</strong></div>
+    <div class="goal">
+      <progress id="goal-bar" max="1000" value="0" aria-label="Progress toward this year's goal"></progress>
+      <div class="goal-foot">
+        <span id="goal-percent">0% of goal</span>
+        <a id="donate" class="button light" target="_blank" rel="noopener">Donate</a>
+      </div>
+    </div>
+  </div>
+
+  <nav class="tabs">
+    <a href="#bracket">Bracket</a>
+    <a id="tab-games" href="#games" hidden>Hero votes</a>
+    <a id="tab-votes" href="#votes" hidden>Vote log</a>
+    <a href="#rules">Rules</a>
+    <a href="#calm">CALM</a>
+  </nav>
+
+  <main>
+    <section id="bracket">
+      <h2>Bracket</h2>
+      <div id="bracket-view"></div>
+    </section>
+
+    <section id="games" hidden>
+      <h2>Chat picks your hero</h2>
+      <p class="muted">Pick a game, pick a hero, and donate. Both players must play the hero the wheel lands on.</p>
+      <div id="open-games" class="card-grid big"></div>
+      <h3 id="drawn-title" hidden>Heroes drawn</h3>
+      <div id="drawn-games" class="card-grid"></div>
+    </section>
+
+    <section id="votes" hidden>
+      <div class="section-head">
+        <h2>Vote log</h2>
+        <label class="search">
+          <span class="sr-only">Search votes</span>
+          <input id="find-vote" type="search" placeholder="Search name, hero or comment">
+        </label>
+      </div>
+      <p class="muted">Every counted vote and where it went. If yours looks wrong, get in touch and we'll fix it.</p>
+      <div class="table-scroll"><table id="vote-log"></table></div>
+    </section>
+
+    <section id="rules">
+      <h2>Rules</h2>
+      <div class="columns">
+        <div>
+          <p class="label">The format</p>
+          <h3>1v1 mid</h3>
+          <ul class="plain">
+            <li>Single elimination</li>
+            <li>Best of one through quarter-finals</li>
+            <li>Best of three semi-finals and final</li>
+          </ul>
+          <p>Dota 2's 1v1 mode with standard mid rules. Full rules to follow.<br>
+            <strong>All players must be available from the tournament start.</strong></p>
+          <p class="label">The twist</p>
+          <h3>Chat picks your hero</h3>
+          <p>Donations can choose the hero BOTH players must play, plus unlock festive casting challenges and goals.</p>
+          <div id="join" class="join dark" hidden>
+            <h3>Join the bracket</h3>
+            <p>Anyone can enter, from brand-new players to TI winners. Play for charity and bragging rights.</p>
+            <a class="button light signup" target="_blank" rel="noopener">Register on Challonge</a>
+          </div>
+        </div>
+        <div>
+          <p class="label">Hero voting</p>
+          <ul id="rules-list" class="rules"></ul>
+        </div>
+      </div>
+    </section>
+
+    <section id="calm">
+      <p class="label">Play for CALM</p>
+      <p class="lead-dark">Campaign Against Living Miserably is a suicide prevention charity providing life-saving services and practical mental health support.</p>
+      <p>Find out more at <a href="https://www.thecalmzone.net" target="_blank" rel="noopener">thecalmzone.net</a></p>
+    </section>
+
+  </main>
+
+  <footer class="muted">
+    <span id="updated"></span>
+    <span>Dota 2 is a trademark of Valve. This fan charity event isn't affiliated with Valve.</span>
+  </footer>
+
+  <dialog id="game-dialog" aria-labelledby="dialog-title">
+    <button id="dialog-close" class="close" aria-label="Close">×</button>
+    <h2 id="dialog-title"></h2>
+    <p id="dialog-sub" class="muted"></p>
+    <div id="dialog-pie" class="pie-row"></div>
+    <div id="dialog-vote">
+      <h3>Pick your hero</h3>
+      <input id="hero-search" type="search" placeholder="Search heroes" aria-label="Search heroes">
+      <div id="hero-grid" class="hero-grid"></div>
+      <div class="vote-bar">
+        <label>Amount
+          <input id="vote-amount" type="number" min="1" step="1" inputmode="decimal">
+        </label>
+        <a id="vote-link" class="button primary" target="_blank" rel="noopener"></a>
+        <button id="copy-vote" class="button" type="button">Copy vote text</button>
+      </div>
+      <p id="vote-note" class="muted small"></p>
+    </div>
+  </dialog>
+
+  <script type="module" src="./site.js"></script>
+</body>
+</html>
